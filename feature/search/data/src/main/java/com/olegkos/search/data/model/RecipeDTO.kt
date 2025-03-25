@@ -1,6 +1,6 @@
 package com.olegkos.search.data.model
 
-data class RecipeDto(
+data class RecipeDTO(
     val dateModified: String?,
     val idMeal: String,
     val strArea: String,

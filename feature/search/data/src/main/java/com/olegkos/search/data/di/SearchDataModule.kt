@@ -18,7 +18,7 @@ object SearchDataModule {
 
   @Provides
   @Singleton
-  fun provideRetrofit(): Retrofit{
+  fun provideRetrofit(): Retrofit {
     return Retrofit.Builder().baseUrl(BASE_URL)
       .addConverterFactory(GsonConverterFactory.create())
       .build()
@@ -27,4 +27,6 @@ object SearchDataModule {
   @Provides
   fun providesSearchApiService(retrofit: Retrofit): SearchApiService =
     retrofit.create(SearchApiService::class.java)
+
+
 }

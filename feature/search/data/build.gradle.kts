@@ -52,4 +52,6 @@ dependencies {
   ksp(libs.room.compiler)
 
 
+  implementation(project(":feature:search:domain"))
+
 }
