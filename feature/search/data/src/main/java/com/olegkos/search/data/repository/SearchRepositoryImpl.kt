@@ -3,7 +3,7 @@ package com.olegkos.search.data.repository
 import com.olegkos.search.data.remote.SearchApiService
 import com.olegkos.search.data.utils.toDomain
 import com.olegkos.search.domain.model.Recipe
-import com.olegkos.search.domain.model.RecipeDetails
+import com.olegkos.search.domain.model.RecipeDetail
 import com.olegkos.search.domain.repository.SearchRepository
 import jakarta.inject.Inject
 
@@ -28,7 +28,7 @@ class SearchRepositoryImpl
 
   }
 
-  override suspend fun getRecipeDetails(id: String): Result<RecipeDetails> {
+  override suspend fun getRecipeDetails(id: String): Result<RecipeDetail> {
     return try {
       val response = searchApiService.getRecipeDetails(id)
       return if (response.isSuccessful) {

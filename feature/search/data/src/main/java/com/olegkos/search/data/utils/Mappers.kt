@@ -2,7 +2,7 @@ package com.olegkos.search.data.utils
 
 import com.olegkos.search.data.model.RecipeDTO
 import com.olegkos.search.domain.model.Recipe
-import com.olegkos.search.domain.model.RecipeDetails
+import com.olegkos.search.domain.model.RecipeDetail
 
 fun List<RecipeDTO>.toDomain(): List<Recipe> = map {
   Recipe(
@@ -17,8 +17,8 @@ fun List<RecipeDTO>.toDomain(): List<Recipe> = map {
   )
 }
 
-fun RecipeDTO.toDomain(): RecipeDetails {
-  return RecipeDetails(
+fun RecipeDTO.toDomain(): RecipeDetail {
+  return RecipeDetail(
     idMeal = idMeal,
     strArea = strArea,
     strMeal = strMeal,

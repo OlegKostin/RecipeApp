@@ -1,6 +1,6 @@
 package com.olegkos.search.domain.model
 
-data class RecipeDetails(
+data class RecipeDetail(
   val idMeal: String,
   val strArea: String,
   val strMeal: String,

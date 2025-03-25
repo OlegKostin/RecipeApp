@@ -1,7 +1,7 @@
 package com.olegkos.search.domain.use_cases
 
 import com.olegkos.common.utils.NetworkResult
-import com.olegkos.search.domain.model.RecipeDetails
+import com.olegkos.search.domain.model.RecipeDetail
 import com.olegkos.search.domain.repository.SearchRepository
 import jakarta.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ class GetRecipeDetailsUseCase @Inject constructor(
   private val searchRepository: SearchRepository
 ) {
 
-  operator fun invoke(info: String) = flow<NetworkResult<RecipeDetails>> {
+  operator fun invoke(info: String) = flow<NetworkResult<RecipeDetail>> {
     emit(NetworkResult.Loading())
     val response = searchRepository.getRecipeDetails(id = info)
     when {
