@@ -6,14 +6,17 @@ import com.olegkos.common.utils.NetworkResult
 import com.olegkos.common.utils.UiText
 import com.olegkos.search.domain.model.RecipeDetail
 import com.olegkos.search.domain.use_cases.GetRecipeDetailsUseCase
-import jakarta.inject.Inject
+import dagger.hilt.android.lifecycle.HiltViewModel
+
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
+@HiltViewModel
 class RecipeDetailsViewModel @Inject constructor(
   private val getRecipeDetailsUseCase: GetRecipeDetailsUseCase
 ) : ViewModel() {

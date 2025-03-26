@@ -3,7 +3,7 @@ package com.olegkos.search.domain.use_cases
 import com.olegkos.common.utils.NetworkResult
 import com.olegkos.search.domain.model.RecipeDetail
 import com.olegkos.search.domain.repository.SearchRepository
-import jakarta.inject.Inject
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

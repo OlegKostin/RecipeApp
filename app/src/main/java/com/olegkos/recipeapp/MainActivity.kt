@@ -11,7 +11,7 @@ import com.olegkos.navigation.NavigationSubGraphs
 import com.olegkos.navigation.RecipeNavigation
 import com.olegkos.recipeapp.ui.theme.RecipeAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import jakarta.inject.Inject
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

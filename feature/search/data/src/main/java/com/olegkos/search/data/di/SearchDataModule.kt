@@ -1,6 +1,8 @@
 package com.olegkos.search.data.di
 
 import com.olegkos.search.data.remote.SearchApiService
+import com.olegkos.search.data.repository.SearchRepositoryImpl
+import com.olegkos.search.domain.repository.SearchRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,5 +30,10 @@ object SearchDataModule {
   fun providesSearchApiService(retrofit: Retrofit): SearchApiService =
     retrofit.create(SearchApiService::class.java)
 
+  @Provides
+  fun provideSearchRepo(searchApiService: SearchApiService,
+                        ): SearchRepository {
+    return SearchRepositoryImpl(searchApiService)
+  }
 
 }

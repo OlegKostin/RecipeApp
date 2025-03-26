@@ -46,8 +46,14 @@ dependencies {
 
   ksp(libs.hilt.compiler)
   implementation(libs.hilt.android)
+  implementation(libs.hilt.compose.navigation)
 
   implementation(libs.navigation.compose)
+
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.material3)
+
+  implementation(libs.coil.compose)
 
   implementation(project(":feature:search:domain"))
   implementation(project(":common"))

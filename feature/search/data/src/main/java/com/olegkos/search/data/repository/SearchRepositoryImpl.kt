@@ -1,17 +1,19 @@
 package com.olegkos.search.data.repository
 
+import android.util.Log
 import com.olegkos.search.data.remote.SearchApiService
 import com.olegkos.search.data.utils.toDomain
 import com.olegkos.search.domain.model.Recipe
 import com.olegkos.search.domain.model.RecipeDetail
 import com.olegkos.search.domain.repository.SearchRepository
-import jakarta.inject.Inject
+import javax.inject.Inject
 
 class SearchRepositoryImpl
 @Inject constructor(private val searchApiService: SearchApiService) : SearchRepository {
   override suspend fun getRecipes(query: String): Result<List<Recipe>> {
     return try {
       val response = searchApiService.getRecipes(query)
+
       if (response.isSuccessful) {
         response.body()?.meals?.let {
           Result.success(it.toDomain())
