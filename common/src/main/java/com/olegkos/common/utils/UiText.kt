@@ -23,6 +23,7 @@ sealed class UiText {
       is LocalString -> {
         context.getString(res, *args)
       }
+
       Idle -> ""
     }
   }

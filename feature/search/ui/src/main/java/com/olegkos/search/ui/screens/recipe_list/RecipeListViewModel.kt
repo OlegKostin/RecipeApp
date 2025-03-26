@@ -6,7 +6,6 @@ import com.olegkos.common.utils.NetworkResult
 import com.olegkos.common.utils.UiText
 import com.olegkos.search.domain.model.Recipe
 import com.olegkos.search.domain.use_cases.GetAllRecipeUseCase
-import com.olegkos.search.ui.screens.details.RecipeDetails
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,7 +27,7 @@ class RecipeListViewModel @Inject constructor(
     getAllRecipeUseCase(query)
       .onEach { result ->
         when (result) {
-          is NetworkResult.Error-> {
+          is NetworkResult.Error -> {
             RecipeList.UiState(error = UiText.RemoteString(result.message.toString()))
           }
 
@@ -66,7 +65,6 @@ object RecipeList {
   )
 
   sealed interface Navigation {
-
 
 
   }

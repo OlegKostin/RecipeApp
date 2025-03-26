@@ -2,6 +2,8 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.kotlin.compose)
+  alias(libs.plugins.hilt.plugin)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -34,6 +36,7 @@ android {
   buildFeatures {
     compose = true
   }
+
 }
 
 dependencies {
@@ -53,4 +56,14 @@ dependencies {
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
+
+  ksp(libs.hilt.compiler)
+  implementation(libs.hilt.android)
+
+  implementation(libs.navigation.compose)
+
+  implementation(project(":feature:search:domain"))
+  implementation(project(":feature:search:ui"))
+  implementation(project(":feature:search:data"))
+  implementation(project(":common"))
 }

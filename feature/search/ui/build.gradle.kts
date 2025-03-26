@@ -2,6 +2,7 @@ plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.hilt.plugin)
+  alias(libs.plugins.kotlin.compose)
   alias(libs.plugins.ksp)
 }
 
@@ -29,6 +30,9 @@ android {
   kotlinOptions {
     jvmTarget = "11"
   }
+  buildFeatures {
+    compose = true
+  }
 }
 
 dependencies {
@@ -42,6 +46,8 @@ dependencies {
 
   ksp(libs.hilt.compiler)
   implementation(libs.hilt.android)
+
+  implementation(libs.navigation.compose)
 
   implementation(project(":feature:search:domain"))
   implementation(project(":common"))
