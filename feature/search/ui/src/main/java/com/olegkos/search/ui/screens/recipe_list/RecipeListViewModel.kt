@@ -1,6 +1,5 @@
 package com.olegkos.search.ui.screens.recipe_list
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.olegkos.common.utils.NetworkResult
@@ -8,12 +7,13 @@ import com.olegkos.common.utils.UiText
 import com.olegkos.search.domain.model.Recipe
 import com.olegkos.search.domain.use_cases.GetAllRecipeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,6 +26,9 @@ class RecipeListViewModel @Inject constructor(
   private val _uiState = MutableStateFlow(RecipeList.UiState())
   val uiState: StateFlow<RecipeList.UiState>
     get() = _uiState.asStateFlow()
+
+  private val _navigation = Channel<RecipeList.Navigation>()
+  val navigation = _navigation.receiveAsFlow()
 
   private fun search(query: String) =
     getAllRecipeUseCase.invoke(query)
@@ -60,6 +63,12 @@ class RecipeListViewModel @Inject constructor(
       is RecipeList.Event.SearchRecipe -> {
         search(event.q)
       }
+
+      is RecipeList.Event.GoToRecipeDetails -> {
+        viewModelScope.launch {
+          _navigation.send(RecipeList.Navigation.GoToRecipeDetails(event.id))
+        }
+      }
     }
   }
 }
@@ -74,13 +83,14 @@ object RecipeList {
 
   sealed interface Navigation {
 
+    data class GoToRecipeDetails(val id: String) : Navigation
 
   }
 
   sealed interface Event {
     data class SearchRecipe(val q: String) : Event
 
-
+    data class GoToRecipeDetails(val id: String) : Event
   }
 
 }

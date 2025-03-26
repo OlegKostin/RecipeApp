@@ -49,7 +49,9 @@ class RecipeDetailsViewModel @Inject constructor(
         }
 
         is NetworkResult.Success -> {
-          RecipeDetails.UiState(data = result.data)
+          _uiState.update {
+            RecipeDetails.UiState(data = result.data)
+          }
         }
       }
     }.launchIn(viewModelScope)
