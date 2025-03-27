@@ -15,7 +15,7 @@ class AppModule {
   @Provides
   fun provideNavigationSubGraphs(
     searchFeatureApi: SearchFeatureApi,
-    ): NavigationSubGraphs {
+  ): NavigationSubGraphs {
     return NavigationSubGraphs(searchFeatureApi)
   }
 }

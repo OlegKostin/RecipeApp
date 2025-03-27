@@ -3,11 +3,11 @@ package com.olegkos.search.domain.use_cases
 import com.olegkos.common.utils.NetworkResult
 import com.olegkos.search.domain.model.RecipeDetail
 import com.olegkos.search.domain.repository.SearchRepository
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
 class GetRecipeDetailsUseCase @Inject constructor(
   private val searchRepository: SearchRepository

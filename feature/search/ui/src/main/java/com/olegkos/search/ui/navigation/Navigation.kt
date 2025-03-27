@@ -52,9 +52,19 @@ class SearchFeatureApiImpl : SearchFeatureApi {
           }
         }
         RecipeDetailsScreen(
-
           modifier = Modifier,
-          viewModel = viewModel
+          viewModel = viewModel,
+          navHostController = navHostController,
+          onNavigationClick = {
+            viewModel.onEvent(RecipeDetails.Event.GoToRecipeListScreen)
+          },
+          onDeleteClick = { recipeDetail ->
+            viewModel.onEvent(RecipeDetails.Event.DeleteRecipe(recipeDetail))
+          },
+          onFavoriteClick = { recipeDetail ->
+            viewModel.onEvent(RecipeDetails.Event.InsertRecipe(recipeDetail))
+
+          },
         )
       }
 

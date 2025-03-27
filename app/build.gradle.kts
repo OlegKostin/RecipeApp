@@ -66,4 +66,5 @@ dependencies {
   implementation(project(":feature:search:ui"))
   implementation(project(":feature:search:data"))
   implementation(project(":common"))
+  implementation(project(":common:data"))
 }

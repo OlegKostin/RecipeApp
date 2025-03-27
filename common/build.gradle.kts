@@ -2,6 +2,7 @@ plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.kotlin.compose)
+
 }
 
 android {
@@ -45,5 +46,9 @@ dependencies {
   implementation(libs.androidx.activity.compose)
   implementation(platform(libs.androidx.compose.bom))
 
+
+
   implementation(libs.navigation.compose)
+
+
 }

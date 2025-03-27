@@ -1,5 +1,6 @@
 package com.olegkos.search.data.di
 
+import com.olegkos.search.data.local.RecipeDao
 import com.olegkos.search.data.remote.SearchApiService
 import com.olegkos.search.data.repository.SearchRepositoryImpl
 import com.olegkos.search.domain.repository.SearchRepository
@@ -31,9 +32,14 @@ object SearchDataModule {
     retrofit.create(SearchApiService::class.java)
 
   @Provides
-  fun provideSearchRepo(searchApiService: SearchApiService,
-                        ): SearchRepository {
-    return SearchRepositoryImpl(searchApiService)
+  fun provideSearchRepo(
+    searchApiService: SearchApiService,
+    recipeDao: RecipeDao
+  ): SearchRepository {
+    return SearchRepositoryImpl(
+      searchApiService,
+      recipeDao = recipeDao
+    )
   }
 
 }

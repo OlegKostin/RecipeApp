@@ -1,12 +1,12 @@
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
-  alias(libs.plugins.hilt.plugin)
   alias(libs.plugins.ksp)
+  alias(libs.plugins.hilt.plugin)
 }
 
 android {
-  namespace = "com.olegkos.search.domain"
+  namespace = "com.olegkos.data"
   compileSdk = 35
 
   defaultConfig {
@@ -39,12 +39,12 @@ dependencies {
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
+  implementation(libs.room.ktx)
+  ksp(libs.room.compiler)
 
   ksp(libs.hilt.compiler)
   implementation(libs.hilt.android)
 
-  implementation(libs.room.ktx)
-  ksp(libs.room.compiler)
-
-  implementation(project(":common"))
+  implementation(project(":feature:search:domain"))
+  implementation(project(":feature:search:data"))
 }
